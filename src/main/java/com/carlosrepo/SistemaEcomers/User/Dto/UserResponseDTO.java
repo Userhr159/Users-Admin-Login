@@ -17,7 +17,7 @@ public class UserResponseDTO {
     @Schema(example = "carlos@correo.com")
     private String email;
     @Schema(example = "ROLE_USER")
-    private String role;
+    private RoleType role;
     @Schema(
             example = "false",
             description = "Indica si se modificaron credenciales y el token debe renovarse"

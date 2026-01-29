@@ -12,7 +12,6 @@ import lombok.Setter;
 @Setter
 @Schema(name = "AdminCreateDTO")
 public class AdminCreateDTO extends UserCreateDTO {
-    @NotBlank
     @NotNull
     private RoleType role;
 }

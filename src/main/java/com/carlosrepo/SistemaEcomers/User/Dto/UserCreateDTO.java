@@ -26,7 +26,7 @@ public class UserCreateDTO {
             description = "Contraseña en texto plano"
     )
     @NotBlank
-    @Size(min = 6)
+    @Size(max = 6)
     private String password;
 
     @Schema(

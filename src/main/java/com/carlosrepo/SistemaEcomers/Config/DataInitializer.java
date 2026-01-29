@@ -16,9 +16,13 @@ public class DataInitializer implements CommandLineRunner {
     @Override
     public void run(String... args) {
 
-        if (roleRepository.count() == 0) {
+        if (roleRepository.findByRoleType(RoleType.ROLE_USER).isEmpty()) {
             roleRepository.save(new RoleEntity(null, RoleType.ROLE_USER));
+        }
+
+        if (roleRepository.findByRoleType(RoleType.ROLE_ADMIN).isEmpty()) {
             roleRepository.save(new RoleEntity(null, RoleType.ROLE_ADMIN));
         }
     }
+
 }

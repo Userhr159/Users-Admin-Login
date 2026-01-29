@@ -20,8 +20,9 @@ public class UserMapper {
         dto.setNombre(entity.getNombre());
         dto.setEmail(entity.getEmail());
 
-        if (entity.getRole() != null && entity.getRole().getNombre() != null) {
-            dto.setRole(entity.getRole().getNombre().name());
+        if (entity.getRole() != null && entity.getRole().getRoleType() != null) {
+            dto.setRole(entity.getRole().getRoleType());
+
         }
 
         return dto;

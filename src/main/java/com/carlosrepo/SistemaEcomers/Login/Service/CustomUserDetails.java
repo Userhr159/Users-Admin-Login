@@ -1,6 +1,7 @@
 package com.carlosrepo.SistemaEcomers.Login.Service;
 
 import com.carlosrepo.SistemaEcomers.Common.exception.BusinessException;
+import com.carlosrepo.SistemaEcomers.User.Entity.RoleEntity;
 import com.carlosrepo.SistemaEcomers.User.Entity.UserEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -20,14 +21,17 @@ public class CustomUserDetails implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
 
-        if (user.getRole() == null) {
+        RoleEntity role = user.getRole();
+
+        if (role == null || role.getRoleType() == null) {
             throw new BusinessException("El usuario no tiene un rol asignado");
         }
 
         return List.of(
-                new SimpleGrantedAuthority(user.getRole().getNombre().name())
+                new SimpleGrantedAuthority(role.getRoleType().name())
         );
     }
+
 
 
     @Override
